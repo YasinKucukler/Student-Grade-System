@@ -5,6 +5,7 @@ public class Student {
     Course c1;
     Course c2;
     Course c3;
+    Course oralExamGrade;
     String name;
     String stuNo;
     String classes;
@@ -23,7 +24,7 @@ public class Student {
         this.isPass = false;
     }
 
-    void addBulkExamNote(int note1, int note2, int note3)
+    void addBulkExamNote(double note1,double c1OralExamGrade,  double note2,double c2OralExamGrade, double note3, double c3OralExamGrade)
     {
         if (note1 >= 0 && note1 <= 100)
         {
@@ -31,25 +32,39 @@ public class Student {
         }
         if (note2 >= 0 && note2 <= 100)
         {
-        this.c2.note = note2;
+            this.c2.note = note2;
         }
         if (note3 >= 0 && note3 <= 100)
         {
-        this.c3.note = note3;
+            this.c3.note = note3;
+        }
+        if (c1OralExamGrade >= 0 && c1OralExamGrade <= 100)
+        {
+            this.c1.oralExamGrade = c1OralExamGrade;
+        }
+        if (c2OralExamGrade >= 0 && c2OralExamGrade <= 100)
+        {
+            this.c2.oralExamGrade = c2OralExamGrade;
+        }
+        if (c3OralExamGrade >= 0 && c3OralExamGrade <= 100)
+        {
+            this.c3.oralExamGrade = c3OralExamGrade;
         }
     }
 
     void printNote(){
 
-        System.out.println(c1.name + " Notu : " + this.c1.note);
-        System.out.println(c2.name + " Notu : " + this.c2.note);
-        System.out.println(c3.name + " Notu : " + this.c3.note);
+        System.out.println(c1.name + " Notu : " + (this.c1.note *6/10 + this.c1.oralExamGrade*4/10));
+        System.out.println(c2.name + " Notu : " + this.c2.note *7/10 + this.c2.oralExamGrade*3/10);
+        System.out.println(c3.name + " Notu : " + this.c3.note *8/10 + this.c3.oralExamGrade*2/10);
         System.out.println("Ortalamanız : " + this.average);
     }
 
     void isPass()
     {
-        this.average = (this.c1.note + this.c2.note + this.c3.note) /3.0;
+        this.average = ((this.c1.note* 6/10 + this.c1.oralExamGrade * 4/10) +
+                (this.c2.note * 7/10 + this.c2.oralExamGrade *3/10) +
+                (this.c3.note * 8/100 + this.c3.oralExamGrade *2/10))  /3.0;
         if (this.average > 55)
         {
             System.out.println("Hababam sınıfı uyanıyor");

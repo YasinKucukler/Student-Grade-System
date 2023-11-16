@@ -7,7 +7,8 @@ public class Course {
     String name;
     String code;
     String prefix;
-    int note;
+    double note;
+    double oralExamGrade;
 
     Course(String name, String code, String prefix)
     {
@@ -15,6 +16,7 @@ public class Course {
         this.code = code;
         this.prefix = prefix;
         this.note = 0;
+        this.oralExamGrade = 0;
     }
 
     void addTeacher(Teacher teacher)
@@ -22,7 +24,6 @@ public class Course {
         if (teacher.branch.equals(this.prefix))
         {
             this.teacher = teacher;
-            //printTeacherInfo();
         }
         else {
             System.out.println("Öğretmen ve ders eşleşmiyor");
